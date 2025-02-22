@@ -38,3 +38,15 @@ steps:
     azureSubscription: 'Azure subscription 1(9a6ae428-d8c3-44fe-bdf2-4e08593901a0)'
     command: 'test'
     projects: '$(solution)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Publish App' 
+  inputs:
+    azureSubscription: 'Azure subscription 1(9a6ae428-d8c3-44fe-bdf2-4e08593901a0)'
+    command: 'publish'
+    publishWebProjects: true
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    publishLocation: 'pipeline'
