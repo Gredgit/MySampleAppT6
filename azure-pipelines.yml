@@ -13,8 +13,6 @@ pool:
 
 variables:
   solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
 
 steps:
 - task: DotNetCoreCLI@2
@@ -27,9 +25,9 @@ steps:
 - task: DotNetCoreCLI@2
   displayName: 'Build' 
   inputs:
+    arguments: '--configuration Release'
     azureSubscription: 'Azure subscription 1(9a6ae428-d8c3-44fe-bdf2-4e08593901a0)'
     command: 'build'
-    configuration: 'Release'
     projects: '$(solution)'
 
 - task: DotNetCoreCLI@2
@@ -42,6 +40,7 @@ steps:
 - task: DotNetCoreCLI@2
   displayName: 'Publish App' 
   inputs:
+    arguments: '--configuration Release'
     azureSubscription: 'Azure subscription 1(9a6ae428-d8c3-44fe-bdf2-4e08593901a0)'
     command: 'publish'
     publishWebProjects: true
