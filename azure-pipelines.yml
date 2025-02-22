@@ -7,7 +7,9 @@ trigger:
 - main
 
 pool:
-  vmImage: 'windows-latest'
+ name: MyLinux
+ demands:
+ - agent.name -equals Agent1
 
 variables:
   solution: '**/*.sln'
