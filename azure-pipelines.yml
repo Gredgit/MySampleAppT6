@@ -47,5 +47,5 @@ steps:
 
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: '$(Pipeline.Workspace)'
+    targetPath: '$(Build.SourcesDirectory)/WebApplicationert/bin/Release/net7.0/publish.zip'
     publishLocation: 'pipeline'
